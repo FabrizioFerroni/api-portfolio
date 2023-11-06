@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EstudiosController;
 use App\Http\Controllers\TrabajosController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +47,11 @@ Route::middleware([
     Route::post('/trabajos/{id}/editar',[TrabajosController::class, 'update'])->name('trabajos.update');
     Route::post('/trabajos/{id}/eliminar',[TrabajosController::class, 'destroy'])->name('trabajos.destroy');
 
-    Route::get('/usuarios', function () {
-        return view('dashboard');
-    })->name('usuarios');
+    // Usuarios route
+    Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
+    Route::get('/usuarios/agregar', [UsuariosController::class, 'create'])->name('usuarios.create');
+    Route::post('/usuarios/agregar', [UsuariosController::class, 'store'])->name('usuarios.store');
+    Route::get('/usuarios/{id}/editar',[UsuariosController::class, 'edit'])->name('usuarios.edit');
+    Route::post('/usuarios/{id}/editar',[UsuariosController::class, 'update'])->name('usuarios.update');
+    Route::post('/usuarios/{id}/eliminar',[UsuariosController::class, 'destroy'])->name('usuarios.destroy');
 });
