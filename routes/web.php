@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EstudiosController;
+use App\Http\Controllers\TrabajosController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,13 @@ Route::middleware([
     Route::post('/estudios/{id}/eliminar',[EstudiosController::class, 'destroy'])->name('estudios.destroy');
 
 
+    // Trabajos route
+    Route::get('/trabajos', [TrabajosController::class,  'index'])->name('trabajos');
+    Route::get('/trabajos/agregar',[TrabajosController::class, 'create'])->name('trabajos.create');
+    Route::post('/trabajos/agregar',[TrabajosController::class, 'store'])->name('trabajos.store');
+    Route::get('/trabajos/{id}/editar',[TrabajosController::class, 'edit'])->name('trabajos.edit');
+    Route::post('/trabajos/{id}/editar',[TrabajosController::class, 'update'])->name('trabajos.update');
+    Route::post('/trabajos/{id}/eliminar',[TrabajosController::class, 'destroy'])->name('trabajos.destroy');
 
     Route::get('/usuarios', function () {
         return view('dashboard');

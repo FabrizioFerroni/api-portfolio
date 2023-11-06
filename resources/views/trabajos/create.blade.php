@@ -1,15 +1,15 @@
-@section('title', 'Agregar estudio')
+@section('title', 'Agregar trabajo')
 <x-app-layout>
     <div>
-        <x-fabrizio-dev.breadcrumbs nombre="Estudios" />
+        <x-fabrizio-dev.breadcrumbs nombre="Trabajos" />
         <div
             class="block max-w p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700">
             <div class="mb-6 flex items-center justify-between">
-                <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Agregar nuevo estudio</h1>
+                <h1 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Agregar nuevo trabajo</h1>
 
             </div>
             <div class="relative overflow-x-auto  sm:rounded-lg">
-                <form action="{{ route('estudios.store') }}" method="POST" novalidate>
+                <form action="{{ route('trabajos.store') }}" method="POST" novalidate>
                     @csrf
                     <div class="grid gap-4 sm:grid-cols-2 sm:gap-6 px-4">
                         <div>
@@ -17,19 +17,19 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titulo</label>
                             <input type="text" name="title" id="title" value="{{ old('title') ?? '' }}"
                                 class="bg-gray-50 border border-gray-300 {{ $errors->has('title') ? 'dark:border-red-700 border-red-700' : '' }} text-gray-900 text-sm rounded-lg  focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Titulo del estudio" required="">
+                                placeholder="Titulo del puesto" required="">
                             @error('title')
                                 <div class="text-red-500 pt-1 pl-0">{{ $message }}</div>
                             @enderror
                         </div>
                         <div>
-                            <label for="institucion"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Institución</label>
-                            <input type="text" name="institucion" id="institucion"
-                                value="{{ old('institucion') ?? '' }}"
-                                class="bg-gray-50 border border-gray-300 {{ $errors->has('institucion') ? 'dark:border-red-700 border-red-700' : '' }} text-gray-900 text-sm rounded-lg  focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Nombre de la institución" required="">
-                            @error('institucion')
+                            <label for="empresa"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Empresa</label>
+                            <input type="text" name="empresa" id="empresa"
+                                value="{{ old('empresa') ?? '' }}"
+                                class="bg-gray-50 border border-gray-300 {{ $errors->has('empresa') ? 'dark:border-red-700 border-red-700' : '' }} text-gray-900 text-sm rounded-lg  focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Nombre de la empresa" required="">
+                            @error('empresa')
                                 <div class="text-red-500 pt-1 pl-0">{{ $message }}</div>
                             @enderror
                         </div>
@@ -38,7 +38,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
                             <textarea id="descripcion" name="descripcion" rows="8"
                                 class="resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 {{ $errors->has('descripcion') ? 'dark:border-red-700 border-red-700' : '' }} focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Descripción del estudio">{{ old('descripcion') ?? '' }}</textarea>
+                                placeholder="Descripción del puesto">{{ old('descripcion') ?? '' }}</textarea>
                             @error('descripcion')
                                 <div class="text-red-500 pt-1 pl-0">{{ $message }}</div>
                             @enderror
@@ -48,7 +48,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duración</label>
                             <input type="text" name="duracion" id="duracion" value="{{ old('duracion') ?? '' }}"
                                 class="bg-gray-50 border border-gray-300 {{ $errors->has('duracion') ? 'dark:border-red-700 border-red-700' : '' }} text-gray-900 text-sm rounded-lg  focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Duración del estudio" required="">
+                                placeholder="Duración en el puesto" required="">
                             @error('duracion')
                                 <div class="text-red-500 pt-1 pl-0">{{ $message }}</div>
                             @enderror
@@ -60,7 +60,7 @@
                             <input type="text" name="fecha_desde_hasta" id="fecha_desde_hasta"
                                 value="{{ old('fecha_desde_hasta') ?? '' }}"
                                 class="bg-gray-50 border border-gray-300  {{ $errors->has('fecha_desde_hasta') ? 'dark:border-red-700 border-red-700' : '' }} text-gray-900 text-sm rounded-lg  focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Desde cuando - hasta cuando el estudio" required="">
+                                placeholder="Desde cuando - hasta cuando el puesto en la empresa" required="">
                             @error('fecha_desde_hasta')
                                 <div class="text-red-500 pt-1 pl-0">{{ $message }}</div>
                             @enderror
@@ -97,7 +97,7 @@
 
                     </div>
                     <div class="flex flex-col md:flex-row justify-between">
-                        <a href="{{ route('estudios') }}"
+                        <a href="{{ route('trabajos') }}"
                             class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-500">
                             Volver
                         </a>
