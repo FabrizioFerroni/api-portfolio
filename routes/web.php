@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EstudiosController;
+use App\Http\Controllers\TestimoniosController;
 use App\Http\Controllers\TrabajosController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,6 @@ Route::middleware([
     Route::post('/estudios/{id}/editar',[EstudiosController::class, 'update'])->name('estudios.update');
     Route::post('/estudios/{id}/eliminar',[EstudiosController::class, 'destroy'])->name('estudios.destroy');
 
-
     // Trabajos route
     Route::get('/trabajos', [TrabajosController::class,  'index'])->name('trabajos');
     Route::get('/trabajos/agregar',[TrabajosController::class, 'create'])->name('trabajos.create');
@@ -46,6 +46,14 @@ Route::middleware([
     Route::get('/trabajos/{id}/editar',[TrabajosController::class, 'edit'])->name('trabajos.edit');
     Route::post('/trabajos/{id}/editar',[TrabajosController::class, 'update'])->name('trabajos.update');
     Route::post('/trabajos/{id}/eliminar',[TrabajosController::class, 'destroy'])->name('trabajos.destroy');
+
+    // Testimonios route
+    Route::get('/testimonios', [TestimoniosController::class, 'index'])->name('testimonios');
+    Route::get('/testimonios/agregar', [TestimoniosController::class, 'create'])->name('testimonios.create');
+    Route::post('/testimonios/agregar', [TestimoniosController::class, 'store'])->name('testimonios.store');
+    Route::get('/testimonios/{id}/editar', [TestimoniosController::class, 'edit'])->name('testimonios.edit');
+    Route::post('/testimonios/{id}/editar', [TestimoniosController::class, 'update'])->name('testimonios.update');
+    Route::post('/testimonios/{id}/eliminar', [TestimoniosController::class, 'destroy'])->name('testimonios.destroy');
 
     // Usuarios route
     Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
@@ -55,3 +63,6 @@ Route::middleware([
     Route::post('/usuarios/{id}/editar',[UsuariosController::class, 'update'])->name('usuarios.update');
     Route::post('/usuarios/{id}/eliminar',[UsuariosController::class, 'destroy'])->name('usuarios.destroy');
 });
+
+// Rutas sin autenticación para imagenes
+require_once __DIR__ . '/images.php';

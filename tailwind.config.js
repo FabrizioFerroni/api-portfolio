@@ -18,6 +18,10 @@ export default {
 
     theme: {
         extend: {
+            spacing: {
+                '116': '25rem',
+                '128': '32rem',
+              },
             colors: {
                 primary: {
                     50: "#eff6ff",
