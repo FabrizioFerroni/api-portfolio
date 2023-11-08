@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TestimonioRequest;
-use App\Http\Requests\TestimonioUpdateRequest;
+use App\Http\Requests\Update\TestimonioUpdateRequest;
 use App\Models\Testimonios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -62,7 +62,7 @@ class TestimoniosController extends Controller
         $testimonio = Testimonios::find($id);
 
         if (!$testimonio) {
-            return back()->with('msgError', 'Testimonio no encontrado');
+            return redirect('/testimonios')->with('msgError', 'Ocurrio un error, no se ha encontrado un testimonio con ese ID');
         }
 
         return view('testimonios.edit', compact('testimonio'));
@@ -73,7 +73,7 @@ class TestimoniosController extends Controller
         $testimonio = Testimonios::find($id);
 
         if (!$testimonio) {
-            return back()->with('msgError', 'Testimonio no encontrado');
+            return redirect('/testimonios')->with('msgError', 'Ocurrio un error, no se ha encontrado un testimonio con ese ID');
         }
 
         $validated = $req->validated();

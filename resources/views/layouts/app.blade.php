@@ -17,6 +17,12 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+    <!-- Tooltips -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@zkreations/tooltips@4/tooltips.min.css"
+      rel="stylesheet"
+    />
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

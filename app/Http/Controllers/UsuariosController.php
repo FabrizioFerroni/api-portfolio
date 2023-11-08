@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UsuarioRequest;
-use App\Http\Requests\UsuarioUpdateRequest;
+use App\Http\Requests\Update\UsuarioUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Laravel\Fortify\Features;

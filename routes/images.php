@@ -19,3 +19,19 @@ Route::get('/{module}/{folder}/{filename}', function ($module, $folder, $filenam
 
     return $response;
 });
+
+Route::get('/{module}/{type}/{folder}/{filename}', function ($module, $type, $folder, $filename) {
+    $path = storage_path('app/public/' . $module . '/' . $type . '/' . $folder . '/' . $filename);
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+});

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CertificadosController;
 use App\Http\Controllers\EstudiosController;
 use App\Http\Controllers\TestimoniosController;
 use App\Http\Controllers\TrabajosController;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 require_once __DIR__ . '/fortify.php';
 require_once __DIR__ . '/jetstream.php';
 
+
 // Rutas ya logueado
 Route::middleware([
     'auth:sanctum',
@@ -31,6 +33,14 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
+    // Certificados route
+    Route::get('/certificados', [CertificadosController::class, 'index'])->name('certificados');
+    Route::get('/certificados/subir', [CertificadosController::class, 'create'])->name('certificados.create');
+    Route::post('/certificados/subir', [CertificadosController::class, 'store'])->name('certificados.store');
+    Route::get('/certificados/{id}/editar', [CertificadosController::class, 'edit'])->name('certificados.edit');
+    Route::post('/certificados/{id}/editar', [CertificadosController::class, 'update'])->name('certificados.update');
+    Route::post('/certificados/{id}/eliminar', [CertificadosController::class, 'destroy'])->name('certificados.destroy');
+
     // Estudios route
     Route::get('/estudios',[EstudiosController::class, 'index'])->name('estudios');
     Route::get('/estudios/agregar',[EstudiosController::class, 'create'])->name('estudios.create');
@@ -39,14 +49,6 @@ Route::middleware([
     Route::post('/estudios/{id}/editar',[EstudiosController::class, 'update'])->name('estudios.update');
     Route::post('/estudios/{id}/eliminar',[EstudiosController::class, 'destroy'])->name('estudios.destroy');
 
-    // Trabajos route
-    Route::get('/trabajos', [TrabajosController::class,  'index'])->name('trabajos');
-    Route::get('/trabajos/agregar',[TrabajosController::class, 'create'])->name('trabajos.create');
-    Route::post('/trabajos/agregar',[TrabajosController::class, 'store'])->name('trabajos.store');
-    Route::get('/trabajos/{id}/editar',[TrabajosController::class, 'edit'])->name('trabajos.edit');
-    Route::post('/trabajos/{id}/editar',[TrabajosController::class, 'update'])->name('trabajos.update');
-    Route::post('/trabajos/{id}/eliminar',[TrabajosController::class, 'destroy'])->name('trabajos.destroy');
-
     // Testimonios route
     Route::get('/testimonios', [TestimoniosController::class, 'index'])->name('testimonios');
     Route::get('/testimonios/agregar', [TestimoniosController::class, 'create'])->name('testimonios.create');
@@ -54,6 +56,14 @@ Route::middleware([
     Route::get('/testimonios/{id}/editar', [TestimoniosController::class, 'edit'])->name('testimonios.edit');
     Route::post('/testimonios/{id}/editar', [TestimoniosController::class, 'update'])->name('testimonios.update');
     Route::post('/testimonios/{id}/eliminar', [TestimoniosController::class, 'destroy'])->name('testimonios.destroy');
+
+    // Trabajos route
+    Route::get('/trabajos', [TrabajosController::class,  'index'])->name('trabajos');
+    Route::get('/trabajos/agregar',[TrabajosController::class, 'create'])->name('trabajos.create');
+    Route::post('/trabajos/agregar',[TrabajosController::class, 'store'])->name('trabajos.store');
+    Route::get('/trabajos/{id}/editar',[TrabajosController::class, 'edit'])->name('trabajos.edit');
+    Route::post('/trabajos/{id}/editar',[TrabajosController::class, 'update'])->name('trabajos.update');
+    Route::post('/trabajos/{id}/eliminar',[TrabajosController::class, 'destroy'])->name('trabajos.destroy');
 
     // Usuarios route
     Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
