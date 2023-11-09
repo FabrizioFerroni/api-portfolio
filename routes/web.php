@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CertificadosController;
 use App\Http\Controllers\EstudiosController;
+use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\TestimoniosController;
 use App\Http\Controllers\TrabajosController;
 use App\Http\Controllers\UsuariosController;
@@ -48,6 +49,14 @@ Route::middleware([
     Route::get('/estudios/{id}/editar',[EstudiosController::class, 'edit'])->name('estudios.edit');
     Route::post('/estudios/{id}/editar',[EstudiosController::class, 'update'])->name('estudios.update');
     Route::post('/estudios/{id}/eliminar',[EstudiosController::class, 'destroy'])->name('estudios.destroy');
+
+    // Proyectos route
+    Route::get('/proyectos', [ProyectosController::class, 'index'])->name('proyectos');
+    Route::get('/proyectos/agregar', [ProyectosController::class, 'create'])->name('proyectos.create');
+    Route::post('/proyectos/agregar', [ProyectosController::class, 'store'])->name('proyectos.store');
+    Route::get('/proyectos/{id}/editar', [ProyectosController::class, 'edit'])->name('proyectos.edit');
+    Route::post('/proyectos/{id}/editar', [ProyectosController::class, 'update'])->name('proyectos.update');
+    Route::post('/proyectos/{id}/eliminar', [ProyectosController::class, 'destroy'])->name('proyectos.destroy');
 
     // Testimonios route
     Route::get('/testimonios', [TestimoniosController::class, 'index'])->name('testimonios');

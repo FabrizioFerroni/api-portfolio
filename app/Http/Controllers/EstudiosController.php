@@ -15,12 +15,12 @@ class EstudiosController extends Controller
     public function index()
     {
         $estudios = Estudios::orderBy('created_at', 'desc')->paginate(10);
-        return view('estudios.index', compact('estudios'));
+        return view('studies.index', compact('estudios'));
     }
 
     public function create()
     {
-        return view('estudios.create');
+        return view('studies.create');
     }
 
     public function store(EstudioRequest $req)
@@ -50,7 +50,7 @@ class EstudiosController extends Controller
         if (!$estudio) {
             return redirect('/estudios')->with('msgError', 'Ocurrio un error, no se ha encontrado un estudio con ese ID');
         }
-        return view('estudios.edit', compact('estudio'));
+        return view('studies.edit', compact('estudio'));
     }
 
     public function update(string $id, EstudioRequest $req)

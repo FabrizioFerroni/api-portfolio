@@ -13,12 +13,12 @@ class UsuariosController extends Controller
     public function index()
     {
         $usuarios = User::orderBy('created_at', 'desc')->paginate(10);
-        return view('usuarios.index', compact('usuarios'));
+        return view('users.index', compact('usuarios'));
     }
 
     public function create()
     {
-        return view('usuarios.create');
+        return view('users.create');
     }
 
     public function store(UsuarioRequest $req)
@@ -52,7 +52,7 @@ class UsuariosController extends Controller
             return redirect('/usuarios')->with('msgError', 'Ocurrio un error, no se ha encontrado un usuario con ese ID');
         }
 
-        return view('usuarios.edit', compact('usuario'));
+        return view('users.edit', compact('usuario'));
     }
 
     public function update(string $id, UsuarioUpdateRequest $req)

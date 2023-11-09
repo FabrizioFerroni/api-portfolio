@@ -10,4 +10,6 @@ class Trabajos extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'empresa', 'descripcion', 'duracion', 'fecha_desde_hasta', 'actual'];
+
+    protected $hidden = ['created_at', 'updated_at'];
 }

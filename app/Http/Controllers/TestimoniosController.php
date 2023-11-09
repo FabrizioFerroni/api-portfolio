@@ -14,12 +14,12 @@ class TestimoniosController extends Controller
     public function index()
     {
         $testimonios = Testimonios::orderBy('created_at', 'desc')->paginate(10);
-        return view('testimonios.index', compact('testimonios'));
+        return view('testimonials.index', compact('testimonios'));
     }
 
     public function create()
     {
-        return view('testimonios.create');
+        return view('testimonials.create');
     }
 
     public function store(TestimonioRequest $req)
@@ -34,7 +34,6 @@ class TestimoniosController extends Controller
                 $name = Str::slug($validated['cliente']);
                 $path = 'testimonios/' . $name;
                 $fileExt = trim($file->getClientOriginalExtension());
-                $upload_path = Config::get('filesystems.disks.uploads.root');
                 $fileName = rand(1, 9999) . '-' . $name . '.' . $fileExt;
 
                 $testimonio->folder = $path;
@@ -65,7 +64,7 @@ class TestimoniosController extends Controller
             return redirect('/testimonios')->with('msgError', 'Ocurrio un error, no se ha encontrado un testimonio con ese ID');
         }
 
-        return view('testimonios.edit', compact('testimonio'));
+        return view('testimonials.edit', compact('testimonio'));
     }
 
     public function update(TestimonioUpdateRequest $req, string $id)

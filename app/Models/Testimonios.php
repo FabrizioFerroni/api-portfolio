@@ -11,5 +11,5 @@ class Testimonios extends Model
 
     protected $fillable = ['cliente', 'cargo', 'descripcion', 'folder', 'imagen'];
 
-    protected $hidden = ['folder'];
+    protected $hidden = ['folder',  'created_at', 'updated_at'];
 }

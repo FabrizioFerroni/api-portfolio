@@ -11,12 +11,12 @@ class TrabajosController extends Controller
 
     public function index(){
         $trabajos = Trabajos::orderBy('created_at', 'desc')->paginate(10);
-        return view('trabajos.index', compact('trabajos'));
+        return view('works.index', compact('trabajos'));
     }
 
     public function create()
     {
-        return view('trabajos.create');
+        return view('works.create');
     }
 
     public function store(TrabajoRequest $req)
@@ -49,7 +49,7 @@ class TrabajosController extends Controller
             return redirect('/trabajos')->with('msgError', 'Ocurrio un error, no se ha encontrado un trabajo con ese ID');
         }
 
-        return view('trabajos.edit', compact('trabajo'));
+        return view('works.edit', compact('trabajo'));
     }
 
     public function update(string $id, TrabajoRequest $req)

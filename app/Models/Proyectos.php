@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Certificados extends Model
+class Proyectos extends Model
 {
     use HasFactory;
 
@@ -13,13 +13,16 @@ class Certificados extends Model
         'imagen',
         'titulo',
         'tags',
-        'academia',
-        'rango_fecha',
-        'certificado'
+        'descripcion',
+        'is_online',
+        'is_private',
+        'url_proyecto',
+        'url_github',
+        'categoria',
     ];
 
 
-    protected $hidden = ['folder', 'folder_certificado', 'created_at', 'updated_at'];
+    protected $hidden = ['folder', 'created_at', 'updated_at'];
 
     protected $casts = [
         'tags' => 'array',
