@@ -17,16 +17,6 @@ class CertificadosController extends Controller
         return view('certificates.index', compact('certificados'));
     }
 
-    public function index_api()
-    {
-        $certificados = Certificados::orderBy('created_at', 'desc')->get();
-        foreach ($certificados as $certificado) {
-            $certificado->imagen = asset($certificado->imagen);
-            $certificado->certificado = asset($certificado->certificado);
-        }
-        return response()->json(['certificates' => $certificados], 200);
-    }
-
     public function create(){
         return view('certificates.create');
     }

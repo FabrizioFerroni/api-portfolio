@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\CertificadosController;
+use App\Http\Controllers\CvController;
+use App\Http\Controllers\DownloadCvController;
 use App\Http\Controllers\EstudiosController;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\TestimoniosController;
 use App\Http\Controllers\TrabajosController;
 use App\Http\Controllers\UsuariosController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,13 +45,26 @@ Route::middleware([
     Route::post('/certificados/{id}/editar', [CertificadosController::class, 'update'])->name('certificados.update');
     Route::post('/certificados/{id}/eliminar', [CertificadosController::class, 'destroy'])->name('certificados.destroy');
 
+    // Cv route
+    Route::get('/curriculums-vitae', [CvController::class, 'index'])->name('cv');
+    Route::get('/curriculums-vitae/subir', [CvController::class, 'create'])->name('cv.create');
+    Route::post('/curriculums-vitae/subir', [CvController::class, 'store'])->name('cv.store');
+    Route::get('/curriculums-vitae/{id}/editar', [CvController::class, 'edit'])->name('cv.edit');
+    Route::post('/curriculums-vitae/{id}/editar', [CvController::class, 'update'])->name('cv.update');
+    Route::post('/curriculums-vitae/{id}/eliminar', [CvController::class, 'destroy'])->name('cv.destroy');
+
+    // Descarga route
+    Route::get('/descargas-cv', [DownloadCvController::class, 'index'])->name('downloads');
+    Route::post('/descargas-cv/{id}/eliminar', [DownloadCvController::class, 'destroy'])->name('downloads.destroy');
+
+
     // Estudios route
-    Route::get('/estudios',[EstudiosController::class, 'index'])->name('estudios');
-    Route::get('/estudios/agregar',[EstudiosController::class, 'create'])->name('estudios.create');
-    Route::post('/estudios/agregar',[EstudiosController::class, 'store'])->name('estudios.store');
-    Route::get('/estudios/{id}/editar',[EstudiosController::class, 'edit'])->name('estudios.edit');
-    Route::post('/estudios/{id}/editar',[EstudiosController::class, 'update'])->name('estudios.update');
-    Route::post('/estudios/{id}/eliminar',[EstudiosController::class, 'destroy'])->name('estudios.destroy');
+    Route::get('/estudios', [EstudiosController::class, 'index'])->name('estudios');
+    Route::get('/estudios/agregar', [EstudiosController::class, 'create'])->name('estudios.create');
+    Route::post('/estudios/agregar', [EstudiosController::class, 'store'])->name('estudios.store');
+    Route::get('/estudios/{id}/editar', [EstudiosController::class, 'edit'])->name('estudios.edit');
+    Route::post('/estudios/{id}/editar', [EstudiosController::class, 'update'])->name('estudios.update');
+    Route::post('/estudios/{id}/eliminar', [EstudiosController::class, 'destroy'])->name('estudios.destroy');
 
     // Proyectos route
     Route::get('/proyectos', [ProyectosController::class, 'index'])->name('proyectos');
@@ -68,19 +84,19 @@ Route::middleware([
 
     // Trabajos route
     Route::get('/trabajos', [TrabajosController::class,  'index'])->name('trabajos');
-    Route::get('/trabajos/agregar',[TrabajosController::class, 'create'])->name('trabajos.create');
-    Route::post('/trabajos/agregar',[TrabajosController::class, 'store'])->name('trabajos.store');
-    Route::get('/trabajos/{id}/editar',[TrabajosController::class, 'edit'])->name('trabajos.edit');
-    Route::post('/trabajos/{id}/editar',[TrabajosController::class, 'update'])->name('trabajos.update');
-    Route::post('/trabajos/{id}/eliminar',[TrabajosController::class, 'destroy'])->name('trabajos.destroy');
+    Route::get('/trabajos/agregar', [TrabajosController::class, 'create'])->name('trabajos.create');
+    Route::post('/trabajos/agregar', [TrabajosController::class, 'store'])->name('trabajos.store');
+    Route::get('/trabajos/{id}/editar', [TrabajosController::class, 'edit'])->name('trabajos.edit');
+    Route::post('/trabajos/{id}/editar', [TrabajosController::class, 'update'])->name('trabajos.update');
+    Route::post('/trabajos/{id}/eliminar', [TrabajosController::class, 'destroy'])->name('trabajos.destroy');
 
     // Usuarios route
     Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
     Route::get('/usuarios/agregar', [UsuariosController::class, 'create'])->name('usuarios.create');
     Route::post('/usuarios/agregar', [UsuariosController::class, 'store'])->name('usuarios.store');
-    Route::get('/usuarios/{id}/editar',[UsuariosController::class, 'edit'])->name('usuarios.edit');
-    Route::post('/usuarios/{id}/editar',[UsuariosController::class, 'update'])->name('usuarios.update');
-    Route::post('/usuarios/{id}/eliminar',[UsuariosController::class, 'destroy'])->name('usuarios.destroy');
+    Route::get('/usuarios/{id}/editar', [UsuariosController::class, 'edit'])->name('usuarios.edit');
+    Route::post('/usuarios/{id}/editar', [UsuariosController::class, 'update'])->name('usuarios.update');
+    Route::post('/usuarios/{id}/eliminar', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
 });
 
 // Rutas sin autenticación para imagenes

@@ -64,5 +64,14 @@
     "File": "Foto",
     "Role": "Rol",
     "Description": "Descripción",
-    "Academy": "Estudios"
+    "Academy": "Estudios",
+    "Saved": "Guardado",
+    "Save": "Guardar",
+    "Enable": "Activar",
+    "Disable": "Desactivar",
+    "read": "leer",
+    "create": "crear",
+    "update":"editar",
+    "delete": "eliminar",
+    "name": "nombre"
 }

@@ -1,10 +1,12 @@
 <x-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        {{-- {{ __('Profile Information') }} --}}
+        Información del perfil
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{-- {{ __('Update your account\'s profile information and email address.') }} --}}
+        Actualice la información del perfil y la dirección de correo electrónico de su cuenta.
     </x-slot>
 
     <x-slot name="form">
@@ -85,11 +87,11 @@
 
     <x-slot name="actions">
         <x-action-message class="me-3" on="saved">
-            {{ __('Saved.') }}
+           Guardado
         </x-action-message>
 
         <x-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            Guardar
         </x-button>
     </x-slot>
 </x-form-section>
