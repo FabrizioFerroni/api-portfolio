@@ -28,7 +28,7 @@ Route::group(['middleware' => config('jetstream.middleware', ['web'])], function
         // User & Profile...
         Route::get('/usuario/perfil', [UserProfileController::class, 'show'])->name('profile.show');
 
-        Route::group(['middleware' => 'verified'], function () {
+        Route::group(['middleware' => ['verified', 'password.confirm']], function () {
             // API...
             if (Jetstream::hasApiFeatures()) {
                 Route::get('/usuario/api-tokens', [ApiTokenController::class, 'index'])->name('api-tokens.index');

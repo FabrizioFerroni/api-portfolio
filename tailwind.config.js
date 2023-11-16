@@ -20,6 +20,7 @@ export default {
         extend: {
             spacing: {
                 '116': '25rem',
+                '120': '30rem',
                 '128': '32rem',
               },
             colors: {

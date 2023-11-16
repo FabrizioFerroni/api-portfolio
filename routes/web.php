@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\ContactoController;
 use App\Http\Controllers\CertificadosController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\CvController;
 use App\Http\Controllers\DownloadCvController;
 use App\Http\Controllers\EstudiosController;
@@ -26,7 +28,6 @@ use Illuminate\Support\Facades\Route;
 require_once __DIR__ . '/fortify.php';
 require_once __DIR__ . '/jetstream.php';
 
-
 // Rutas ya logueado
 Route::middleware([
     'auth:sanctum',
@@ -44,6 +45,10 @@ Route::middleware([
     Route::get('/certificados/{id}/editar', [CertificadosController::class, 'edit'])->name('certificados.edit');
     Route::post('/certificados/{id}/editar', [CertificadosController::class, 'update'])->name('certificados.update');
     Route::post('/certificados/{id}/eliminar', [CertificadosController::class, 'destroy'])->name('certificados.destroy');
+
+    // Contacto route
+    Route::get('/consultas-web', [ContactoController::class, 'index'])->name('contactos');
+    Route::get('/consultas-web/{id}', [ContactoController::class, 'getById'])->name('contactos.show');
 
     // Cv route
     Route::get('/curriculums-vitae', [CvController::class, 'index'])->name('cv');

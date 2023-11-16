@@ -5,3 +5,34 @@
 [x-cloak] {
     display: none;
 }
+
+#mail-lect {
+    overflow-y: auto;
+    padding: 0 10px; /* Ajusta según tus necesidades */
+}
+
+#mail-data {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    /* "thin" para ocultar la barra de desplazamiento en Firefox */
+}
+
+#mail-data::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento en navegadores WebKit (Chrome, Safari) */
+}
+
+/* .simplebar-content-wrapper {
+    overflow: hidden !important;
+}
+
+.simplebar-enabled .simplebar-content-wrapper {
+    overflow: visible !important;
+} */
+
+#mail-data.simplebar-enabled {
+    overflow: hidden !important;
+}
+
+.active {
+    @apply bg-gray-100 dark:bg-gray-700; /* Fondo claro y oscuro - Cambia esto con los colores que desees */
+}

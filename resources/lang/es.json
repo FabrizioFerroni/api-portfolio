@@ -73,5 +73,9 @@
     "create": "crear",
     "update":"editar",
     "delete": "eliminar",
-    "name": "nombre"
+    "name": "nombre",
+    "password": "contraseña",
+    "For your security, please confirm your password to continue.": "Para su seguridad, confirme su contraseña para continuar.",
+    "Two-factor Confirmation": "Confirmación de dos factores",
+    "The provided two factor authentication code was invalid.": "El código de dos factores proporcionado no es válido."
 }

@@ -3,7 +3,6 @@
     class="scrollbar-thumb-gray-700 scrollbar-track-gray-300 dark:scrollbar-thumb-gray-900 dark:scrollbar-track-gray-500">
 
 <head>
-    {{-- @notifyCss --}}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -43,8 +42,17 @@
 https://cdn.jsdelivr.net/npm/notyf@3.10.0/notyf.min.css
 " rel="stylesheet">
 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+
     <!-- Styles -->
     @livewireStyles
+
+    @yield('style')
+
 </head>
 
 <body class="font-sans antialiased scrollbar-thin">
@@ -111,8 +119,6 @@ https://cdn.jsdelivr.net/npm/notyf@3.10.0/notyf.min.css
             notyf.error(msgError);
         </script>
     @endif
-    {{-- <x-notify::notify />
-    @notifyJs --}}
 </body>
 
 </html>
