@@ -26,6 +26,7 @@ class PortfolioController extends Controller
     public function cv()
     {
         $cv = Cv::where('actual', true)->orderBy('actual', 'desc')->first();
+        if ($cv === null) return response()->json(['mensaje' => 'No hay ningun cv subido'], 404);
         $cv->cv = asset($cv->cv);
         return response()->json($cv, 200);
     }
@@ -36,7 +37,7 @@ class PortfolioController extends Controller
         // $estudios = Estudios::orderBy('actual', 'desc')->orderBy('created_at', 'desc')->paginate($limit);
         $estudios = Estudios::orderBy('actual', 'desc')->orderBy('created_at', 'desc')->get();
 
-        return response()->json(['estudios'=>$estudios], 200);
+        return response()->json(['estudios' => $estudios], 200);
     }
 
     public function proyectos()
@@ -46,7 +47,7 @@ class PortfolioController extends Controller
             $proyecto->imagen = asset($proyecto->imagen);
         }
 
-        return response()->json(['proyectos'=>$proyectos], 200);
+        return response()->json(['proyectos' => $proyectos], 200);
     }
 
     public function testimonios()
@@ -57,14 +58,13 @@ class PortfolioController extends Controller
             $testimonio->imagen = asset($testimonio->imagen);
         }
 
-        return response()->json(['testimonios'=>$testimonios], 200);
+        return response()->json(['testimonios' => $testimonios], 200);
     }
 
     public function trabajos()
     {
         $trabajos = Trabajos::orderBy('actual', 'desc')->orderBy('created_at', 'desc')->get();
 
-        return response()->json(['trabajos'=>$trabajos], 200);
-
+        return response()->json(['trabajos' => $trabajos], 200);
     }
 }
