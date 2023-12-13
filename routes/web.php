@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\CvController;
 use App\Http\Controllers\DownloadCvController;
 use App\Http\Controllers\EstudiosController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\TestimoniosController;
 use App\Http\Controllers\TrabajosController;
@@ -34,9 +35,8 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Dashboard route
+    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
 
     // Certificados route
     Route::get('/certificados', [CertificadosController::class, 'index'])->name('certificados');

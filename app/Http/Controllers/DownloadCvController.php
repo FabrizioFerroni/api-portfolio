@@ -11,7 +11,7 @@ class DownloadCvController extends Controller
 {
     public function index()
     {
-        $downloads = DownloadCv::orderBy('created_at', 'desc')->paginate(10);
+        $downloads = DownloadCv::orderBy('last_download_date', 'desc')->paginate(10);
 
         foreach ($downloads as $download) {
             $download->last_download_date = Carbon::parse($download->last_download_date)->format('d/m/Y H:i');
@@ -51,6 +51,6 @@ class DownloadCvController extends Controller
             $download->save();
         }
 
-        return response()->json(['mensaje' => 'Gracias por descargar mi curriculum'], 200);
+        return response()->json(['message' => 'Gracias por descargar mi curriculum'], 200);
     }
 }

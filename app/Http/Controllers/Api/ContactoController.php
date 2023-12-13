@@ -15,13 +15,16 @@ class ContactoController extends Controller
 {
     public function index()
     {
-        $contactos = Contacto::all();
+        $contactos = Contacto::orderBy('fecha_enviado', 'desc')->get();
         return view('contact.index', compact('contactos'));
     }
 
     public function getById(string $id)
     {
         $contacto = Contacto::find($id);
+        if (!$contacto) {
+            return response()->json(['message' => 'Contacto no encontrado'], 404);
+        }
         return response()->json($contacto, 200);
     }
 
@@ -30,11 +33,11 @@ class ContactoController extends Controller
         try {
             $validated = $req->validated();
             if ($validated) {
-                $nombre = $validated['nombre'];
-                $apellido = $validated['apellido'];
+                $nombre = ucfirst($validated['nombre']);
+                $apellido = ucfirst($validated['apellido']);
                 $email = $validated['email'];
                 $telefono = $validated['telefono'];
-                $asunto = $validated['asunto'];
+                $asunto = ucfirst($validated['asunto']);
                 $mensaje = $validated['mensaje'];
 
                 $contacto = new Contacto();

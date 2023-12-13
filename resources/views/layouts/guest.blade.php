@@ -17,13 +17,13 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Tooltips -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/@zkreations/tooltips@4/tooltips.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/@zkreations/tooltips@4/tooltips.min.css" rel="stylesheet" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="/build/assets/app-172a5e6b.js" rel="stylesheet" />
+    <script src="/build/assets/app-172a5e6b.js"></script>
+
 
     <script>
         // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -36,8 +36,8 @@
     </script>
 
     <script src="
-            https://cdn.jsdelivr.net/npm/notyf@3.10.0/notyf.min.js
-            "></script>
+                https://cdn.jsdelivr.net/npm/notyf@3.10.0/notyf.min.js
+                "></script>
     <link href="
 https://cdn.jsdelivr.net/npm/notyf@3.10.0/notyf.min.css
 " rel="stylesheet">

@@ -30,9 +30,12 @@ class PortfolioController extends Controller
         return response()->json($cv, 200);
     }
 
-    public function estudios()
+    public function estudios(Request  $req)
     {
+        $limit = isset($req->limit) ? $req->limit : 3;
+        // $estudios = Estudios::orderBy('actual', 'desc')->orderBy('created_at', 'desc')->paginate($limit);
         $estudios = Estudios::orderBy('actual', 'desc')->orderBy('created_at', 'desc')->get();
+
         return response()->json(['estudios'=>$estudios], 200);
     }
 

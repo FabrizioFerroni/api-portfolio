@@ -36,3 +36,9 @@
 .active {
     @apply bg-gray-100 dark:bg-gray-700; /* Fondo claro y oscuro - Cambia esto con los colores que desees */
 }
+
+@media (min-width: 640px) {
+    .sm\:grid-cols-4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
